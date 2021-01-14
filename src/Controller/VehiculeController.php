@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+// Import des classes
 use App\Core\AbstractController;
 use App\Model\VehiculeModel;
 
+// Déclaration de la classe
 class VehiculeController extends AbstractController
 {
     public function index()
@@ -12,8 +14,10 @@ class VehiculeController extends AbstractController
         // On crée un objet de la classe VehiculeModel
         $vehiculeModel = new VehiculeModel($this->database);
 
+        // On fait ensuite appel à la méthode getAllVehicule sur notre objet
         $vehicules = $vehiculeModel->getAllVehicule();
 
+        // Inclusion du template
         render('vehicule', [
             'vehicules' => $vehicules,
         ]);

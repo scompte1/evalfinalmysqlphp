@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+// Import des classes
 use App\Core\AbstractController;
 use App\Model\VehiculeModel;
 
+// Déclaration de la classe
 class RemoveVehiculeController extends AbstractController
 {
     public function index()
@@ -17,7 +19,11 @@ class RemoveVehiculeController extends AbstractController
 
         $vehiculeId = $_GET['id'];
 
+
+        // On créé un objet de la classe VehiculeModel
         $vehiculeModel = new VehiculeModel($this->database);
+
+        // On fait ensuite appel à la méthode removeVehicule sur notre objet
         $vehiculeModel->removeVehicule($vehiculeId);
 
         header('Location: /vehicule');

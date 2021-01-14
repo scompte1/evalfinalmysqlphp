@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+// Import des classes
 use App\Core\AbstractController;
 use App\Model\ConducteurModel;
 
+// Déclaration de la classe
 class ConducteurController extends AbstractController
 {
     public function index()
@@ -12,8 +14,10 @@ class ConducteurController extends AbstractController
         // On crée un objet de la classe ConducteurModel
         $conducteurModel = new ConducteurModel($this->database);
 
+        // On fait ensuite appel à la méthode getAllConducteur sur notre objet
         $conducteurs = $conducteurModel->getAllConducteur();
 
+        // Inclusion du template
         render('conducteur', [
             'conducteurs' => $conducteurs,
         ]);

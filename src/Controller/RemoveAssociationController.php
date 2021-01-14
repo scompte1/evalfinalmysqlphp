@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+// Import des classes
 use App\Core\AbstractController;
 use App\Model\AssociationModel;
 
+// Déclaration de la classe
 class RemoveAssociationController extends AbstractController
 {
     public function index()
@@ -17,7 +19,10 @@ class RemoveAssociationController extends AbstractController
 
         $associationId = $_GET['id'];
 
+        // On créé un objet de la classe AssociationModel
         $associationModel = new AssociationModel($this->database);
+
+        // On fait ensuite appel à la méthode removeAssociation sur notre objet
         $associationModel->removeAssociation($associationId);
 
         header('Location: /association');

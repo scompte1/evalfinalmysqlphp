@@ -40,10 +40,16 @@
     <main>
         <h1 class="text-center mt-3">Page d'accueil</h1>
 
+
+        <!-- Plus assez de temps donc j'ai fais le max comme je pouvais même si je sais que c'était pas forcément ce qui étais attendu ... -->
         <div class="container">
-            <p>Afficher le nombre de conducteur : <?= implode(',', $nbConducteurs); ?></p>
-            <p>Afficher le nombre de véhicules : <?= implode(',', $nbVehicules); ?></p>
-            <p>Afficher le nombre d'associations : <?= implode(',', $nbAssociations); ?></p>
+            <p>Afficher le nombre de conducteur : <?= implode(', ', $nbConducteurs); ?></p>
+            <p>Afficher le nombre de véhicules : <?= implode(', ', $nbVehicules); ?></p>
+            <p>Afficher le nombre d'associations : <?= implode(', ', $nbAssociations); ?></p>
+            <p>Afficher les véhicules n'ayant pas de conducteurs : <?php foreach ($vehiculesansconducteur as $vehicule) : ?> <?= implode(', ',$vehicule); ?>,<?php endforeach ?></p>
+            <p>Afficher les conducteurs n'ayant pas de véhicules : <?php foreach ($conducteursansvehicule as $conducteur) : ?> <?= implode(', ',$conducteur); ?>,<?php endforeach ?></p>
+            <p>Afficher les véhicules conduit par Phillipe Pandre : <?php foreach ($vehiculePhillipe as $vehicule) : ?> <?= implode(', ',$vehicule); ?>,<?php endforeach ?></p>
+            <p>Afficher tous les conducteurs et leurs véhicules : <?php foreach ($conducteurandvehicule as $conducteur) : ?> <?= implode(', ',$conducteur); ?>,<?php endforeach ?></p>
         </div>
     </main>
 

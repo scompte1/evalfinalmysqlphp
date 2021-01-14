@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+// Import des classes
 use App\Core\AbstractController;
 use App\Model\AssociationModel;
 
+// Déclaration de la classe
 class EditAssociationController extends AbstractController
 {
     public function index()

@@ -21,11 +21,27 @@ class HomeController extends AbstractController
 
         // Nombre d'associations
         $nbAssociations = $homeModel->getNbAssociations();
+
+        // Véhicule sans conducteurs
+        $vehiculesansconducteur = $homeModel->getVehiculeWithNoConducteur();
         
+        // Conducteurs sans véhicules
+        $conducteursansvehicule = $homeModel->getConducteurWithNoVehicule();
+
+        // Véhicule conduit par Phillippe
+        $vehiculePhillipe = $homeModel->getVehiculePandre();
+
+        // Conducteurs + véhicules
+        $conducteurandvehicule = $homeModel->getAllConducteurWithVehicule();
+
         render('home', [
             'nbConducteurs' => $nbConducteurs,
             'nbVehicules' => $nbVehicules,
             'nbAssociations' => $nbAssociations,
+            'vehiculesansconducteur' => $vehiculesansconducteur,
+            'conducteursansvehicule' => $conducteursansvehicule,
+            'vehiculePhillipe' => $vehiculePhillipe,
+            'conducteurandvehicule' => $conducteurandvehicule,
         ]);
     }
 }

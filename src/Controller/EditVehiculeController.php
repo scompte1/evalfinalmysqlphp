@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+// Import des classes
 use App\Core\AbstractController;
 use App\Model\VehiculeModel;
 
+// Déclaration de la classe
 class EditVehiculeController extends AbstractController
 {
     public function index()
