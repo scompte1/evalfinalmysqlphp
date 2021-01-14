@@ -38,12 +38,35 @@
     </header>
 
     <main>
-        <h1 class="text-center mt-3">Page d'accueil</h1>
+        <h1 class="text-center mt-3">Modifier une association</h1>
 
         <div class="container">
-            <p>Afficher le nombre de conducteur : <?= implode(',', $nbConducteurs); ?></p>
-            <p>Afficher le nombre de véhicules : <?= implode(',', $nbVehicules); ?></p>
-            <p>Afficher le nombre d'associations : <?= implode(',', $nbAssociations); ?></p>
+            <form action="/association/edit" method="POST">
+                <input type="hidden" name="association-id" value="<?=$association['id_association'];?>">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="conducteur">conducteur</label>
+                        <select name="conducteur" required>
+                            <?php foreach ($associations as $association): ?>
+                                <?php $conducteurId = $_POST['id_conducteur']??$product['id_conducteur']; ?>
+                                <?php $selected = $association['id_association'] == $conducteurId ? 'selected' : ''; ?>
+                                <option <?=$selected;?> value="<?=$association['id_association'];?>"><?=$association['prenom'];?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group mt-2">                   
+                        <label for="conducteur">vehicule</label>
+                        <select name="vehicule" required>
+                            <?php foreach ($associations as $association): ?>
+                                <?php $vehiculeId = $_POST['id_vehicule']??$product['id_vehicule']; ?>
+                                <?php $selected = $association['id_association'] == $vehiculeId ? 'selected' : ''; ?>
+                                <option <?=$selected;?> value="<?=$association['id_association'];?>"><?=$association['marque'];?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </fieldset>
+                <input type="submit" value="Enregistrer" class="btn btn-dark mt-2">
+            </form>
         </div>
     </main>
 

@@ -56,7 +56,15 @@ $routes = [
     '/association/new' => [
         'class' => 'App\\Controller\\AssociationController',
         'method' => 'addAssociation'
-    ]
+    ],
+    '/association/edit' => [
+        'class' => 'App\\Controller\\EditAssociationController',
+        'method' => 'index'
+    ],
+    '/association/remove' => [
+        'class' => 'App\\Controller\\RemoveAssociationController',
+        'method' => 'index'
+    ],
 ];
 
 // Si le path existe dans le tableau de routes... 
