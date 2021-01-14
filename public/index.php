@@ -16,6 +16,14 @@ $routes = [
     '/' => [
         'class' => 'App\\Controller\\HomeController',
         'method' => 'index'
+    ],
+    '/conducteur' => [
+        'class' => 'App\\Controller\\ConducteurController',
+        'method' => 'index'
+    ],
+    '/conducteur/new' => [
+        'class' => 'App\\Controller\\ConducteurController',
+        'method' => 'addConducteur'
     ]
 ];
 
