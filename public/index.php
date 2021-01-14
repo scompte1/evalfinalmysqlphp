@@ -24,6 +24,14 @@ $routes = [
     '/conducteur/new' => [
         'class' => 'App\\Controller\\ConducteurController',
         'method' => 'addConducteur'
+    ],
+    '/conducteur/edit' => [
+        'class' => 'App\\Controller\\EditConducteurController',
+        'method' => 'index'
+    ],
+    '/conducteur/remove' => [
+        'class' => 'App\\Controller\\RemoveConducteurController',
+        'method' => 'index'
     ]
 ];
 

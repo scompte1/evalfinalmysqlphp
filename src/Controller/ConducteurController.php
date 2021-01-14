@@ -31,6 +31,7 @@ class ConducteurController extends AbstractController
             $prenom = $_POST['prenom'];
             $nom = $_POST['nom'];
 
+            // Validation des données
             $errors = validateConducteurForm($prenom, $nom);
 
             // Si tout est OK
@@ -42,6 +43,16 @@ class ConducteurController extends AbstractController
 
                 header('Location: /conducteur');
             }
+
+            // On crée un objet de la classe ConducteurModel
+            $conducteurModel = new ConducteurModel($this->database);
+
+            $conducteurs = $conducteurModel->getAllConducteur();
+
+            render('conducteur', [
+                'conducteurs' => $conducteurs,
+                'errors' => $errors,
+            ]);
         }
     }
 }
