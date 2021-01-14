@@ -26,3 +26,26 @@ function validateConducteurForm($prenom, $nom)
     
     return $errors;
 }
+
+function validateVehiculeForm($marque, $modele, $couleur, $immatriculation)
+{
+    $errors = [];
+
+    if (!$marque) {
+        $errors[] = "La marque du véhicule est obligatoire";
+    }
+
+    if (!$modele) {
+        $errors[] = "Le modèle du véhicule est obligatoire";
+    }
+
+    if (!$couleur) {
+        $errors[] = "La couleur du véhicule est obligatoire";
+    }
+
+    if (!$immatriculation) {
+        $errors[] = "L'immatriculation du véhicule est obligatoire";
+    }
+
+    return $errors;
+}

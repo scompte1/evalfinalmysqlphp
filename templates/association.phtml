@@ -38,34 +38,40 @@
     </header>
 
     <main>
-        <h1 class="text-center mt-3">Conducteurs</h1>
+        <h1 class="text-center mt-3">Associations</h1>
         <section class="container">
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
-                        <th>id_conducteur</th>
-                        <th>prenom</th>
-                        <th>nom</th>
+                        <th>id_association</th>
+                        <th>conducteur</th>
+                        <th>vehicule</th>
                         <th>modification</th>
                         <th>suppression</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <?php foreach ($conducteurs as $conducteur): ?>
+                    <?php foreach ($associations as $association): ?>
                         <tr>
-                            <th><?=$conducteur['id_conducteur']; ?></th>
-                            <th><?=htmlspecialchars($conducteur['prenom']); ?></th>
-                            <th><?=htmlspecialchars($conducteur['nom']); ?></th>
+                            <th><?=$association['id_association']; ?></th>
                             <th>
-                                <a href="/conducteur/edit?id=<?=$conducteur['id_conducteur'];?>" class="text-warning">
+                                <p><?=htmlspecialchars($association['prenom']); ?> <?=htmlspecialchars($association['nom']); ?></p>
+                                <p class="ps-5"><?=htmlspecialchars($association['id_conducteur']); ?></p>
+                            </th>
+                            <th>
+                                <p><?=htmlspecialchars($association['marque']); ?> <?=htmlspecialchars($association['modele']); ?></p>
+                                <p class="ps-4"><?=htmlspecialchars($association['id_vehicule']); ?></p>
+                            </th>
+                            <th>
+                                <a href="/conducteur/edit?id=<?=$association['id_association'];?>" class="text-warning">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                                     <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                                     </svg>
                                 </a>
                             </th>
                             <th>
-                                <a href="/conducteur/remove?id=<?=$conducteur['id_conducteur'];?>" class="text-danger" onclick="var aze=confirm('êtes-vous sur de vouloir supprimer ce conducteur ?');return aze;">
+                                <a href="/conducteur/remove?id=<?=$association['id_association'];?>" class="text-danger" onclick="var aze=confirm('êtes-vous sur de vouloir supprimer ce conducteur ?');return aze;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                     </svg>
@@ -87,23 +93,34 @@
         </div>
 
         <div class="container mt-2">
-            <form action="/conducteur/new" method="POST">
+            <form action="/association/new" method="POST">
                 <fieldset>
-                    <legend>Ajouter un conducteur</legend>
                     <div class="form-group">
-                        <label for="prenom">Prenom</label>
-                        <input required type="text" class="form-control" id="prenom" name="prenom">
+                        <label for="conducteur">conducteur</label>
+                        <select name="conducteur" required>
+                            <?php foreach ($associations as $association): ?>
+                                <?php $conducteurId = $_POST['id_conducteur']??$product['id_conducteur']; ?>
+                                <?php $selected = $association['id_association'] == $conducteurId ? 'selected' : ''; ?>
+                                <option <?=$selected;?> value="<?=$association['id_association'];?>"><?=$association['prenom'];?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="nom">Nom</label>
-                        <input required type="text" class="form-control" id="nom" name="nom">
+                    <div class="form-group mt-2">                   
+                        <label for="conducteur">vehicule</label>
+                        <select name="vehicule" required>
+                            <?php foreach ($associations as $association): ?>
+                                <?php $vehiculeId = $_POST['id_vehicule']??$product['id_vehicule']; ?>
+                                <?php $selected = $association['id_association'] == $vehiculeId ? 'selected' : ''; ?>
+                                <option <?=$selected;?> value="<?=$association['id_association'];?>"><?=$association['marque'];?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </fieldset>
                 <input type="submit" value="Ajouter ce conducteur" class="mt-3 btn btn-dark">
             </form>
         </div>
-    </main>
 
+    </main>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 

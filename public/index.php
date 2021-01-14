@@ -32,6 +32,30 @@ $routes = [
     '/conducteur/remove' => [
         'class' => 'App\\Controller\\RemoveConducteurController',
         'method' => 'index'
+    ],
+    '/vehicule' => [
+        'class' => 'App\\Controller\\VehiculeController',
+        'method' => 'index'
+    ],
+    '/vehicule/new' => [
+        'class' => 'App\\Controller\\VehiculeController',
+        'method' => 'addVehicule'
+    ],
+    '/vehicule/edit' => [
+        'class' => 'App\\Controller\\EditVehiculeController',
+        'method' => 'index'
+    ],
+    '/vehicule/remove' => [
+        'class' => 'App\\Controller\\RemoveVehiculeController',
+        'method' => 'index'
+    ],
+    '/association' => [
+        'class' => 'App\\Controller\\AssociationController',
+        'method' => 'index'
+    ],
+    '/association/new' => [
+        'class' => 'App\\Controller\\AssociationController',
+        'method' => 'addAssociation'
     ]
 ];
 

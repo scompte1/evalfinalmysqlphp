@@ -37,7 +37,7 @@ class ConducteurController extends AbstractController
             // Si tout est OK
             if (empty($errors)) {
 
-                // Insertion du produit dans la BDD
+                // Insertion du conducteur dans la BDD
                 $conducteurModel = new ConducteurModel($this->database);
                 $conducteurModel->insertConducteur($prenom, $nom);
 
